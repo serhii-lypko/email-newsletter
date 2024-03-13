@@ -1,3 +1,5 @@
+use std::net::TcpListener;
+
 /*
     We will try to build an email newsletter service that supports what
     you need to get off the ground if you are willing to add an email
@@ -20,5 +22,8 @@
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
-    email_newsletter::run()?.await
+    // the main function will not proceed until the server shuts down
+
+    let listener = TcpListener::bind("127.0.0.1:8000").expect("Failed to bind");
+    email_newsletter::run(listener)?.await
 }
