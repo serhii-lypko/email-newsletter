@@ -24,9 +24,6 @@ async fn health_check_works() {
         .await
         .expect("Failed to execute request.");
 
-    dbg!(address);
-    println!("---------");
-
     assert!(response.status().is_success());
     assert_eq!(Some(0), response.content_length());
 }
