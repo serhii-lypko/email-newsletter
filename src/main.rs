@@ -24,8 +24,6 @@ use std::net::TcpListener;
 async fn main() -> std::io::Result<()> {
     // the main function will not proceed until the server shuts down
 
-    let a = "foo bat baz";
-
     let listener = TcpListener::bind("127.0.0.1:8000").expect("Failed to bind");
     email_newsletter::run(listener)?.await
 }
